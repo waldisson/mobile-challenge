@@ -27,7 +27,7 @@ export function SignIn() {
       />
       <ImageBackground source={Illustration}
        style={styles.image} 
-       resizeMode="contain"
+       resizeMode="cover"
       >
         <View style={styles.content}>
           <Text style={styles.title}>

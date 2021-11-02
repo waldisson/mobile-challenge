@@ -17,11 +17,12 @@ export const styles = StyleSheet.create({
   content: {
     padding: 10,
     position: 'absolute',
-    bottom:0,
+    bottom:30,
     width:'100%',
     height:220,
     borderTopLeftRadius: 20,
-    borderTopRightRadius: 20
+    borderTopRightRadius: 20,
+    alignItems: 'center',
   },
   title: {
     color: theme.colors.white,
@@ -29,9 +30,6 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 28,
     fontWeight:'700',
-  },
-  botaoEntrar: {
-    backgroundColor: theme.colors.background
-  },
+  }
 
 });

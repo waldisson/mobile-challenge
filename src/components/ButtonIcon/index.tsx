@@ -16,7 +16,7 @@ type Props = TouchableOpacityProps & {
 export function ButtonIcon({ title, ...rest }: Props) {
   return (
     <TouchableOpacity style={styles.container} {...rest}>
-      <View style={styles.groupButton}>
+      <View>
         <Text style={styles.title}>{title}</Text>
       </View>
     </TouchableOpacity>
