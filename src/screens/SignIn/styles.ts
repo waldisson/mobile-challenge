@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   content: {
-    backgroundColor:theme.colors.backgroundContent,
     padding: 10,
     position: 'absolute',
     bottom:0,
@@ -25,7 +24,7 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: 20
   },
   title: {
-    color: theme.colors.heading,
+    color: theme.colors.white,
     marginTop:20,
     textAlign: 'center',
     fontSize: 28,

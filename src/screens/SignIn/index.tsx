@@ -1,9 +1,9 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { 
   View, 
   Text,
   ImageBackground, 
-  TouchableHighlight,
   StatusBar 
 } from 'react-native';
 
@@ -12,6 +12,12 @@ import {styles} from './styles';
 import Illustration from '../../assets/Illustration.png'
 
 export function SignIn() {
+  const navigation = useNavigation();
+
+  function handleEnterClick() {
+    navigation.navigate('Home')
+  }
+
   return (
     <View style={styles.container}>
       <StatusBar 
@@ -29,6 +35,7 @@ export function SignIn() {
           </Text>
 
           <ButtonIcon 
+            onPress={handleEnterClick}
             title="Entrar"
             activeOpacity={0.7}
           />

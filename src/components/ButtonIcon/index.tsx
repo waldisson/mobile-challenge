@@ -1,27 +1,24 @@
-import React from 'react';
-import { 
+import React from "react";
+import {
   Text,
   Image,
   View,
   TouchableOpacity,
-  TouchableOpacityProps
-} from 'react-native';
+  TouchableOpacityProps,
+} from "react-native";
 
-import {styles} from './styles';
+import { styles } from "./styles";
 
 type Props = TouchableOpacityProps & {
-  title: string,
-}
+  title: string;
+};
 
-export function ButtonIcon({ title, ...rest } : Props) {
+export function ButtonIcon({ title, ...rest }: Props) {
   return (
-    <TouchableOpacity style={styles.container} 
-      {...rest}
-    >
+    <TouchableOpacity style={styles.container} {...rest}>
       <View style={styles.groupButton}>
         <Text style={styles.title}>{title}</Text>
       </View>
     </TouchableOpacity>
-
-  )
+  );
 }

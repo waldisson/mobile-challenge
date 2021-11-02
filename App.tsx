@@ -1,9 +1,13 @@
 import React from 'react';
-import { SignIn }  from './src/screens/SignIn';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { Routes } from './src/routes/routes';
 
 export default function App() {
   return (
-    <SignIn />
-    
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
   );
 }

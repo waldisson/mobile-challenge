@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     bottom: 20,
     left: 10,
     right: 10,
-    backgroundColor:theme.colors.primary,
+    backgroundColor:theme.colors.terciary,
     borderRadius:8,
     alignItems: 'center',
     justifyContent: 'center',
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
 
   },
   title: {
-    color:theme.colors.textButton,
+    color:theme.colors.primary,
     fontSize:18,
     fontWeight:'700'
   }
