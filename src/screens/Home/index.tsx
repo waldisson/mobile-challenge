@@ -1,33 +1,68 @@
 import React from "react";
-import { View, Text, FlatList,Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, FlatList } from "react-native";
+import {useNavigation} from '@react-navigation/native';
 import { Header } from "../../components/Header";
+import { HeroList } from "../../components/HeroList";
 import { styles } from "./styles";
-import  api from '../../api/api';
+// import  api from '../../api/api';
+
 
 export function Home() {
+  const navigation = useNavigation();
 
-  const Item = ({ data }) => {
-    return (
-      <View>
-        <Text>{data.name}</Text>
-        <Text>{data.slug}</Text>
-        <Text>{data.powerstats.intelligence}</Text>
-        <Image source={data.images.md} />
-      </View>
-    )
+  function handleHeroDetails() {
+    navigation.navigate('Details');
   }
-
-  return (
-    <SafeAreaView style={styles.container}>
+ 
+  const appointment = [
+    {
+      id: '1',
+      name: "A-Bomb",
+      slug: "1-a-bomb",
+      powerstats: {
+        'intelligence': 38,
+        'strength':100,
+        'speed': 17
+      },
+      appearance: {
+        "gender": "Male"
+      },
+      biography: {
+        fullName: "Richard Milhouse Jones",
+      }
+    },
+    {
+      id: '2',
+      name: "Abe Sapien",
+      slug: "1-a-bomb",
+      powerstats: {
+        'intelligence': 38,
+        'strength':100,
+        'speed': 17
+      },
+      appearance: {
+        "gender": "Male"
+      },
+      biography: {
+        fullName: "Abraham Sapien",
+      }
+    }
+  ]
+   return (
+    <View style={styles.container}>
       <Header title="Home"/>
       <FlatList
-        data={api}
+        data={appointment}
         keyExtractor={item => item.id}
-        renderItem={({item}) => (<Item data={item}/>
+        renderItem={({item}) => (
+          <HeroList 
+            data={item} 
+            onPress={handleHeroDetails}
+          />
         )}
+        showsVerticalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
