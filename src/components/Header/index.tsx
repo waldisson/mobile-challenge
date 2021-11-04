@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, TextInput, TouchableOpacity,TouchableOpacityProps,} from "react-native";
+import { View, TextInput, TouchableOpacity} from "react-native";
 import {EvilIcons } from '@expo/vector-icons';
 
 import { styles } from "./styles";
@@ -8,7 +8,7 @@ type Props = {
   title: string;
 };
 
-export function Header({ title, ...rest }: Props) {
+export function Header({ title }: Props) {
   const [search, setSearch] = useState('')
  
   function handleSearchClick() {

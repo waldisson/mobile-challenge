@@ -13,14 +13,14 @@ type Props = {
 
 export function HeaderDetails({ title }: Props) {
   const navigation = useNavigation();
-  const { secondary100, socondary40} = theme.colors;
+  const { secondary100, secondary40} = theme.colors;
 
   function handleGoBack() {
     navigation.goBack();
  }
   return (
     <LinearGradient 
-    colors={[secondary100, socondary40]}
+    colors={[secondary100, secondary40]}
     style={styles.container}
   >
       <BorderlessButton onPress={handleGoBack}>

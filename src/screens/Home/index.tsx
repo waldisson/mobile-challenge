@@ -1,68 +1,47 @@
-import React from "react";
-import { View, Text, FlatList } from "react-native";
-import {useNavigation} from '@react-navigation/native';
+import React, { useState, useEffect } from "react";
+import axios, { AxiosResponse } from "axios";
+import { View, FlatList, ActivityIndicator } from "react-native";
 import { Header } from "../../components/Header";
+import { useNavigation } from "@react-navigation/native";
 import { HeroList } from "../../components/HeroList";
 import { styles } from "./styles";
-// import  api from '../../api/api';
-
+import { Data } from "../../@types/interfaces";
 
 export function Home() {
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(true);
+  const [heroData, setHeroData] = useState<Data[]>([]);
 
-  function handleHeroDetails() {
-    navigation.navigate('Details');
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get<Data[]>("https://akabab.github.io/superhero-api/api/all.json")
+      .then((response: AxiosResponse) => {
+        setHeroData(response.data);
+        setLoading(false);
+      });
+  }, []);
+
+  function handleHeroDetails(id: number) {
+    navigation.navigate("Details", { id });
   }
- 
-  const appointment = [
-    {
-      id: '1',
-      name: "A-Bomb",
-      slug: "1-a-bomb",
-      powerstats: {
-        'intelligence': 38,
-        'strength':100,
-        'speed': 17
-      },
-      appearance: {
-        "gender": "Male"
-      },
-      biography: {
-        fullName: "Richard Milhouse Jones",
-      }
-    },
-    {
-      id: '2',
-      name: "Abe Sapien",
-      slug: "1-a-bomb",
-      powerstats: {
-        'intelligence': 38,
-        'strength':100,
-        'speed': 17
-      },
-      appearance: {
-        "gender": "Male"
-      },
-      biography: {
-        fullName: "Abraham Sapien",
-      }
-    }
-  ]
-   return (
+
+  return (
     <View style={styles.container}>
-      <Header title="Home"/>
-      <FlatList
-        data={appointment}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => (
-          <HeroList 
-            data={item} 
-            onPress={handleHeroDetails}
-          />
-        )}
-        showsVerticalScrollIndicator={false}
-      />
+      <Header title="Home" />
+      {!loading ? (
+        <FlatList
+          data={heroData}
+          initialNumToRender={10}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <HeroList data={item} onPress={() => handleHeroDetails(item.id)} />
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      ) : (
+        <ActivityIndicator size="large" color="#fff" />
+      )}
     </View>
   );
 }
-

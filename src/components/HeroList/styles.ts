@@ -21,8 +21,17 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  photo: {
+    width: 64,
+    height: 64,
+    borderRadius:8,
+    marginRight:10,
+    marginLeft:10,
+    margin: 5,
+  },
   info: {
     justifyContent: 'center',
+    width:'75%',
   },
   title: {
     marginLeft:10,
@@ -31,7 +40,8 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     marginLeft:10,
-    color: theme.colors.heading
+    color: theme.colors.heading,
+
   },
   arrow: {
     width: '18%',

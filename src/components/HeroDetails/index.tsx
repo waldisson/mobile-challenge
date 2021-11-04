@@ -1,69 +1,40 @@
-import React, {useState} from "react";
+import React from "react";
 import { View, Text} from "react-native";
-import { AntDesign  } from '@expo/vector-icons';
+import { PowerStats } from "../../@types/interfaces";
 
 
 import { styles } from "./styles";
 
-
-export type AppearanceProps = {
-  gender: string;
-  race: string;
-  eyeColor: string;
-  hairColor:string;
-};
-export type BiographyProps = {
-  fullName: string;
-};
-export type PowerStatsProps = {
-  intelligence: number;
-  strength: number;
-  speed: number;
-  // durability:number;
-  // power: number;
-  // combat: number;
-};
-
-export type HeroListProps = {
-  id: string;
-  name: string;
-  slug: string;
-  powerstats: PowerStatsProps;
-  // appearance: AppearanceProps;
-  biography: BiographyProps;
-
-};
-
 type Props = {
-  data?: HeroListProps;
+  powerstats: PowerStats;
 };
 
-export function HeroDetails({ data, ...rest }: Props) {
+export function HeroDetails({ powerstats }: Props) {
   return (
    <View style={styles.container}>
       <View style={styles.glossary}>
         <Text style={styles.glossaryTitle}>INT</Text>
-        <Text style={styles.glossaryValue}>38</Text>
+        <Text style={styles.glossaryValue}>{powerstats.intelligence}</Text>
       </View>
       <View style={styles.glossary}>
         <Text style={styles.glossaryTitle}>STR</Text>
-        <Text style={styles.glossaryValue}>100</Text>
+        <Text style={styles.glossaryValue}>{powerstats.strength}</Text>
       </View>
       <View style={styles.glossary}>
         <Text style={styles.glossaryTitle}>SPD</Text>
-        <Text style={styles.glossaryValue}>17</Text>
+        <Text style={styles.glossaryValue}>{powerstats.speed}</Text>
       </View>
       <View style={styles.glossary}>
         <Text style={styles.glossaryTitle}>DUR</Text>
-        <Text style={styles.glossaryValue}>80</Text>
+        <Text style={styles.glossaryValue}>{powerstats.durability}</Text>
       </View>
       <View style={styles.glossary}>
         <Text style={styles.glossaryTitle}>POW</Text>
-        <Text style={styles.glossaryValue}>24</Text>
+        <Text style={styles.glossaryValue}>{powerstats.power}</Text>
       </View>
       <View style={styles.glossary}>
         <Text style={styles.glossaryTitle}>CMB</Text>
-        <Text style={styles.glossaryValue}>64</Text>
+        <Text style={styles.glossaryValue}>{powerstats.combat}</Text>
       </View>
      
    </View>
